@@ -1,0 +1,42 @@
+{% set name = "frilouz" %}
+{% set version = "0.0.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: ba7922f36500f6ea4a68e87f9cd24fe4a011a98673cb7ab4c7c3efcd33647a59  
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-use-pep517
+  noarch: python
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+
+test:
+  requires:
+    - pip
+  imports:
+    - frilouz
+  commands:
+    - pip check
+
+about:
+  home: https://github.com/serge-sans-paille/frilouz/
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: A tiny wrapper compatible with ast.parse from the builtin ``ast`` module and gast.parse from the great gast package.
+
+extra:
+  recipe-maintainers:
+    - SylvainCorlay
+    - marimeireles
