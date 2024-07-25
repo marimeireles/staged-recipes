@@ -1,4 +1,4 @@
-{% set name = "cfgraph" %}
+{% set name = "cfgraph-json" %}
 {% set version = "0.2.1" %}
 
 package:
@@ -24,7 +24,7 @@ requirements:
 
 test:
   imports:
-    - CFGraph
+    - cfgraph_json
   commands:
     - pip check
   requires:
